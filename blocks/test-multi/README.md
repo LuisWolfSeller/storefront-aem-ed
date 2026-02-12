@@ -1,53 +1,68 @@
-# Commerce Order Cost Summary Block
+# test-multi
 
 ## Overview
 
-The Commerce Order Cost Summary block renders order cost information using the @dropins/storefront-order OrderCostSummary container. It provides a simple wrapper for displaying order cost details in order-related contexts.
+The `test-multi` block is responsible for rendering [describe what it does here].
+It is designed to work within the EDS x-com storefront architecture and follows standard block rendering patterns.
+
+This block handles content rendering, optional configuration, and dynamic behavior when applicable.
+
+---
 
 ## Configuration
 
+The block supports the following configuration options:
 
+| Option | Type | Default | Description |
+|--------|------|---------|------------|
+| variant | string | "default" | Controls visual style of the block |
+| theme | string | "light" | Defines color scheme |
+| layout | string | "standard" | Layout mode |
+
+If no configuration is provided, the block falls back to default behavior.
+
+---
 
 ## Integration
 
-<!-- ### Block Configuration
+This block integrates with the storefront in the following ways:
 
-No block configuration is read via `readBlockConfig()`. -->
+- May read URL parameters if required.
+- Does not persist state in `localStorage` unless explicitly implemented.
+- Can emit or listen to custom DOM events.
+- Compatible with Universal Editor authoring model.
 
-<!-- ### URL Parameters
+If integrated with Commerce or PDP context, it detects page type via DOM or metadata inspection.
 
-No URL parameters directly affect this block's behavior. -->
-
-<!-- ### Local Storage
-
-No localStorage keys are used by this block. -->
-
-<!-- ### Events
-
-#### Event Listeners
-
-No direct event listeners are implemented in this block.
-
-#### Event Emitters
-
-No events are emitted by this block. -->
+---
 
 ## Behavior Patterns
 
-### Page Context Detection
+User interaction flow:
 
-- **Order Context**: When used in order-related pages, displays order cost summary from order data
-- **All Contexts**: Consistently renders order cost summary regardless of page context
+1. Block initializes when DOM is ready.
+2. Configuration is parsed from authored content.
+3. Event listeners are attached (if applicable).
+4. Dynamic rendering is triggered.
+5. Updates respond to user interaction or page state.
 
-### User Interaction Flows
+If the block is used in multiple contexts (PDP, PLP, CMS page), it adapts accordingly.
 
-1. **Initialization**: Block initializes the order renderer and renders the OrderCostSummary container
-2. **Data Display**: Displays order cost information based on available order data
-3. **Read-Only View**: Provides read-only display of order cost details
+---
 
-### Error Handling
+## Error Handling
 
-- **Container Errors**: If the OrderCostSummary container fails to render, the block content remains empty
-- **Data Errors**: If order cost data is missing or invalid, the container handles appropriate fallback display
-- **Configuration Errors**: No configuration errors possible as block uses default configuration
-- **Fallback Behavior**: Always falls back to empty display if container rendering fails
+The block implements the following fallback strategies:
+
+- Graceful degradation if required data is missing.
+- Console warnings for debugging in development.
+- Default rendering if configuration is invalid.
+- Avoids breaking the page if JS fails.
+
+All errors are handled locally to prevent global script interruption.
+
+---
+
+## Styling
+
+Styles are located in:
