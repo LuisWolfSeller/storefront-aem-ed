@@ -823,20 +823,20 @@
         "description": "Position to match with",
         "options": [
           {
-            "name": "Below ",
-            "value": "below-"
-          },
-          {
-            "name": "Above ",
-            "value": "above"
-          },
-          {
-            "name": "Below ",
+            "name": "Below",
             "value": "below"
           },
           {
-            "name": "Above ",
+            "name": "Above",
             "value": "above"
+          },
+          {
+            "name": "Left ",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
           }
         ]
       }
